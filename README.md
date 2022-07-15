@@ -1,19 +1,20 @@
-# PornChecker
+# PornChecker 
+<b>English | <a href="README_CN.md">简体中文</a></b></p>
 
-基于 [NSFWJS](https://github.com/infinitered/nsfwjs) 的 AI 图片鉴黄 API 接口，[Gfriends 女友头像仓库](https://github.com/gfriends/gfriends) 衍生项目。
+A API to check porn photo, base on [NSFWJS](https://github.com/infinitered/nsfwjs). This is a [Gfriends](https://github.com/gfriends/gfriends) derivative project.
 
-支持常见的 `jpg`、`png`、`jpeg` 格式文件。
+Common formats supported, such as `jpg`,`png`,`jpeg`.
 
-## 部署
+## Deploy
 
-### Heroku 部署
+### Deploy on Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/gfriends/pornchecker)
 
-默认 API 接口为：`https://{APP-Name}.herokuapp.com/api`，为避免滥用，可通过 `API_PATH` 变量指定路径。
+Default API URL: `https://{APP-Name}.herokuapp.com/api`, change `API_PATH` if you want to Anti-hotlinking.
 
-### 本地部署
+### Deploy on local
 
-推荐环境 NodeJS 16 及以上版本
+Recommended environment is NodeJS 16 or higher.
 ```
 git clone https://github.com/gfriends/pornchecker
 cd pornchecker
@@ -21,13 +22,13 @@ npm i
 npm i -g pm2
 pm2 start index.js --name pornchecker
 ```
-默认 API 接口为 ：`http(s)://{IP}:5000/api`
+Default API URL: `http(s)://{IP}:5000/api`
 
-## 使用
-Request：使用 HTTP POST 方法请求 API，传输二进制图片且 Content-Type 应指定为对应图片格式。
+## Usege
+Request：HTTP POST, post binary image file with Content-Type header.
 
 ```
-# Curl 请求示例
+# Example with Curl
 curl http(s)://{API_URL}/api -F "image=@/{PATH}/{FILENAME}.jpg;type=image/jpeg"
 ```
 
@@ -58,15 +59,15 @@ Response：
 ]
 ```
 
-`className` 含义：
+`className` meaning：
 ```
-Drawing：二次元合规指数
-Hentai：二次元暴露指数
-Neutral：三次元合规指数
-Sexy：三次元暴露指数
-Porn：色情指数
+Drawing：Innocent index for drawn image
+Hentai：Bare index for drawn image
+Neutral：Innocent index for true people
+Sexy：Bare index for true people
+Porn：Porn index.
 ```
 
-`probability`含义：
+`probability`meaning：
 
-范围 0-1 ，值越高，即越接近该类型。大部分情况下以最高值判定图片类型。
+Range 0-1 , the higher value means closer to that type. In most cases, the highest value is used to determine the image type.
