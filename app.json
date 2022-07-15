@@ -2,7 +2,7 @@
 	"name": "PornChecker",
 	"description": "A image porn checker API",
 	"repository": "https://github.com/gfriends/pornchecker",
-	"logo": "https://github.com/organizations/gfriends/settings/profile",
+	"logo": "https://avatars.githubusercontent.com/u/109220009",
 	"keywords": ["gfriends"],
 	"env": {
 		"API_PATH": {
