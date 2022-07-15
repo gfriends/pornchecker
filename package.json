@@ -1,12 +1,12 @@
 {
-    "name":"testcheckimage",
+    "name":"PornChecker",
     "version":"1.0.0",
-    "description":"",
+    "description":"A image porn checker API",
     "main":"index.js",
     "scripts":{
         "start":"node index.js"
     },
-    "author":"",
+    "author":"xinxin8816",
     "license":"ISC",
     "dependencies":{
         "@tensorflow/tfjs-node":"^2.8.5",

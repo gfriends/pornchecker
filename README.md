@@ -1,7 +1,7 @@
 # PornChecker 
 <b>English | <a href="README_CN.md">简体中文</a></b></p>
 
-A API to check porn photo, base on [NSFWJS](https://github.com/infinitered/nsfwjs). This is a [Gfriends](https://github.com/gfriends/gfriends) derivative project.
+A API to check porn image, base on [NSFWJS](https://github.com/infinitered/nsfwjs). This is a [Gfriends](https://github.com/gfriends/gfriends) derivative project.
 
 Common formats supported, such as `jpg`,`png`,`jpeg`.
 
@@ -10,7 +10,7 @@ Common formats supported, such as `jpg`,`png`,`jpeg`.
 ### Deploy on Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/gfriends/pornchecker)
 
-Default API URL: `https://{APP-Name}.herokuapp.com/api`, change `API_PATH` if you want to Anti-hotlinking.
+Default API URL: `https://{APP-Name}.herokuapp.com/api`, change `API_PATH` if you want to anti-hotlinking.
 
 ### Deploy on local
 
