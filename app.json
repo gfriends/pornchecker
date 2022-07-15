@@ -1,0 +1,18 @@
+{
+	"name": "PornChecker",
+	"description": "A image porn checker API",
+	"repository": "https://github.com/gfriends/pornchecker",
+	"keywords": ["gfriends"],
+	"env": {
+		"API_PATH": {
+			"description": "Default is \"api\".",
+			"required": false,
+			"value": ""
+		}
+	},
+	"buildpacks": [
+		{
+			"url": "heroku/nodejs"
+		}
+	]
+}
