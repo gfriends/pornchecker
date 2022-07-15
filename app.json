@@ -6,7 +6,7 @@
 	"keywords": ["gfriends"],
 	"env": {
 		"API_PATH": {
-			"description": "Default is \"api\".",
+			"description": "Default is \"\/api\".",
 			"required": false
 		}
 	},
