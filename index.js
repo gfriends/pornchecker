@@ -28,7 +28,7 @@ const convert = async (img) => {
 app.post('/api', upload.single('image'), async (req, res) => {
   if (!req.file) res.status(400).send('Missing image multipart/form-data')
   else {
-    const image = await convert(req.file.buffer)
+    const image = await tf.node.decodeJpeg(req.file.buffer)
     const predictions = await _model.classify(image)
     image.dispose()
     res.json(predictions)
@@ -40,7 +40,7 @@ app.get('/', async (req, res) => {
 })
 
 const load_model = async () => {
-    _model = await nsfw.load()
+    _model = await nsfw.load('file://./model/')
 }
 
 load_model().then(() => app.listen(process.env.PORT || 5000))
