@@ -24,7 +24,7 @@ app.get('/', async (req, res) => {
 })
 
 const load_model = async () => {
-    _model = await nsfw.load('file://./model/', { size: 299 })
+    _model = await nsfw.load('file://./model/', { size: 224 })
 }
 
 load_model().then(() => app.listen(process.env.PORT || 5000))
