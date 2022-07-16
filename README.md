@@ -27,14 +27,22 @@ Default API URL: `http(s)://{IP}:5000/api`
 ## Usege
 Request：HTTP POST, post binary image file with Content-Type header.
 
-```
+```bash
 # Example with Curl
-curl http(s)://{API_URL}/api -F "image=@/{PATH}/{FILENAME}.jpg;type=image/jpeg"
+curl "http(s)://{API_URL}/api" -F "image=@/{PATH}/{FILENAME}.jpg;type=image/jpg"
+```
+
+```python3
+# Example with Python3
+import requests
+data = {'image': ('{FILENAME}.jpg', open("/{PATH}/{FILENAME}.jpg", 'rb'), "image/jpg")}
+response = requests.post('http(s)://{API_URL}/api', files = data)
+print(response.text)
 ```
 
 Response：
 
-```
+```json
 [
     {
         "className": "Neutral",

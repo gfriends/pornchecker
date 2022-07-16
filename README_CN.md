@@ -27,9 +27,17 @@ pm2 start index.js --name pornchecker
 ## 使用
 Request：使用 HTTP POST 方法请求 API，传输二进制图片且 Content-Type 应指定为对应图片格式。
 
+```bash
+# Example with Curl
+curl "http(s)://{API_URL}/api" -F "image=@/{PATH}/{FILENAME}.jpg;type=image/jpg"
 ```
-# Curl 请求示例
-curl http(s)://{API_URL}/api -F "image=@/{PATH}/{FILENAME}.jpg;type=image/jpeg"
+
+```python3
+# Example with Python3
+import requests
+data = {'image': ('{FILENAME}.jpg', open("/{PATH}/{FILENAME}.jpg", 'rb'), "image/jpg")}
+response = requests.post('http(s)://{API_URL}/api', files = data)
+print(response.text)
 ```
 
 Response：
