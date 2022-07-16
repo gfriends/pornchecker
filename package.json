@@ -9,7 +9,7 @@
     "author":"xinxin8816",
     "license":"ISC",
     "dependencies":{
-        "@tensorflow/tfjs-node": "^2.8.5",
+        "@tensorflow/tfjs-node": "^3.18.0",
         "express": "^4.17.1",
         "multer": "^1.4.2",
         "nsfwjs": "^2.4.1"
