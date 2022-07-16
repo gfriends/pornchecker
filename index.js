@@ -59,7 +59,7 @@ app.get('/', async (req, res) => {
 })
 
 const load_model = async () => {
-    _model = await nsfw.load('file://./model/')
+    _model = await nsfw.load('https://raw.githubusercontent.com/infinitered/nsfwjs/master/example/nsfw_demo/public/quant_mid/')
 }
 
 load_model().then(() => app.listen(process.env.PORT || 5000))
