@@ -24,7 +24,7 @@ app.get('/', async (req, res) => {
 })
 
 const load_model = async () => {
-    _model = await nsfw.load('https://nsfwjs.com/quant_mid/')
+    _model = await nsfw.load('https://nsfwjs.com/quant_mid/',{ type: 'graph' })
 }
 
 load_model().then(() => app.listen(process.env.PORT || 5000))
