@@ -40,7 +40,7 @@ app.get('/', async (req, res) => {
 })
 
 const load_model = async () => {
-    _model = await nsfw.load('./model/')
+    _model = await nsfw.load()
 }
 
 load_model().then(() => app.listen(process.env.PORT || 5000))
