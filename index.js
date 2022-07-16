@@ -1,57 +1,38 @@
 const express = require('express')
 const multer = require('multer')
 const jpeg = require('jpeg-js')
+
 const tf = require('@tensorflow/tfjs-node')
 const nsfw = require('nsfwjs')
+
 const app = express()
-const sharp = require('sharp');
-const upload = multer({
-    fileFilter: function (req, file, cb) {
-        if (
-            file.mimetype !== 'image/png' &&
-            file.mimetype !== 'image/jpg' &&
-            file.mimetype !== 'image/jpeg'
-        ) {
-            cb(null, false);
-        } else {
-            cb(null, true);
-        }
-    }
-});
+const upload = multer()
 
 let _model
 
 const convert = async (img) => {
-    // Decoded image in UInt8 Byte array
-    const image = await jpeg.decode(img, true)
+  // Decoded image in UInt8 Byte array
+  const image = await jpeg.decode(img, true)
 
-    const numChannels = 3
-    const numPixels = image.width * image.height
-    const values = new Int32Array(numPixels * numChannels)
+  const numChannels = 3
+  const numPixels = image.width * image.height
+  const values = new Int32Array(numPixels * numChannels)
 
-    for (let i = 0; i < numPixels; i++)
-        for (let c = 0; c < numChannels; ++c)
-            values[i * numChannels + c] = image.data[i * 4 + c]
+  for (let i = 0; i < numPixels; i++)
+    for (let c = 0; c < numChannels; ++c)
+      values[i * numChannels + c] = image.data[i * 4 + c]
 
-    return tf.tensor3d(values, [image.height, image.width, numChannels], 'int32')
+  return tf.tensor3d(values, [image.height, image.width, numChannels], 'int32')
 }
 
-app.post(process.env.API_PATH || '/api', upload.single('image'), async (req, res) => {
-    if (!req.file) res.status(400).send('Missing image multipart/form-data')
-    else {
-        try {
-            const data = await sharp(req.file.buffer)
-                .jpeg()
-                .toBuffer()
-            const image = await convert(data)
-            const predictions = await _model.classify(image)
-            image.dispose()
-            res.json(predictions)
-        } catch (error) {
-            res.json(400).send('ERROR! Check log please.');
-            console.log(error);
-        }
-    }
+app.post('/api', upload.single('image'), async (req, res) => {
+  if (!req.file) res.status(400).send('Missing image multipart/form-data')
+  else {
+    const image = await convert(req.file.buffer)
+    const predictions = await _model.classify(image)
+    image.dispose()
+    res.json(predictions)
+  }
 })
 
 app.get('/', async (req, res) => {
@@ -59,7 +40,7 @@ app.get('/', async (req, res) => {
 })
 
 const load_model = async () => {
-    _model = await nsfw.load('https://raw.githubusercontent.com/infinitered/nsfwjs/master/example/nsfw_demo/public/quant_mid/')
+    _model = await nsfw.load('./model/')
 }
 
 load_model().then(() => app.listen(process.env.PORT || 5000))
