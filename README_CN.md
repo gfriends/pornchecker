@@ -60,13 +60,12 @@ Response：
 ```
 
 `className` 含义：
-```
-Drawing：二次元合规指数
-Hentai：二次元暴露指数
-Neutral：三次元合规指数
-Sexy：三次元暴露指数
-Porn：色情指数
-```
+- `Drawing` - 安全友好的漫画/绘画
+- `Hentai` - 色情漫画/绘画
+- `Neutral` - 安全友好的照片
+- `Porn` - 色情照片
+- `Sexy` - 性感但不露骨的照片
+
 
 `probability`含义：
 

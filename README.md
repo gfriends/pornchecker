@@ -60,13 +60,11 @@ Response：
 ```
 
 `className` meaning：
-```
-Drawing：Innocent index for drawn image
-Hentai：Bare index for drawn image
-Neutral：Innocent index for true people
-Sexy：Bare index for true people
-Porn：Porn index.
-```
+- `Drawing` - safe for work drawings (including anime)
+- `Hentai` - hentai and pornographic drawings
+- `Neutral` - safe for work neutral images
+- `Porn` - pornographic images, sexual acts
+- `Sexy` - sexually explicit images, not pornography
 
 `probability`meaning：
 
